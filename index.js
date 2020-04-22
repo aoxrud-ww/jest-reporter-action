@@ -19,12 +19,8 @@ const main = async () => {
   const prNumber = commitPRs.data[0].number;
 
   const codeCoverage = execSync(testCommand).toString();
-  let coveragePercentage = execSync(
-    "npx coverage-percentage ./coverage/lcov.info --lcov"
-  ).toString();
-  coveragePercentage = parseFloat(coveragePercentage).toFixed(2);
 
-  const commentBody = `<p>Total Coverage: <code>${coveragePercentage}</code></p>
+  const commentBody = `
 <details><summary>Coverage report</summary>
 <p>
 <pre>${codeCoverage}</pre>
